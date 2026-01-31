@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WeatherSphere-Py</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>WeatherSphere-Py</h1>
+
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <div class="weather-box">
+            <h2>{{ weather.city }}</h2>
+            <p>🌡 Temperature: {{ weather.temp }} °C</p>
+            <p>💧 Humidity: {{ weather.humidity }}%</p>
+            <p>🌬 Wind Speed: {{ weather.wind }} m/s</p>
+            <p>☁ Condition: {{ weather.condition }}</p>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
